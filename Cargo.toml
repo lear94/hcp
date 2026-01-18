@@ -1,0 +1,20 @@
+[package]
+name = "hcp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# === UI STACK (Sincronizado a última versión estable) ===
+ratatui = "0.29.0"
+crossterm = "0.28.1"
+tui-textarea = "0.7.0" # Compatible nativamente con Ratatui 0.29
+
+# === RED & ASYNC ===
+tokio = { version = "1.42", features = ["full"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream", "json"] }
+futures-util = "0.3"
+
+# === UTILS ===
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
