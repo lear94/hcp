@@ -15,7 +15,8 @@ Developing APIs often requires a trade-off: use `curl` (fast but complex to writ
 
 It’s not just a client; it’s a diagnostic tool that breaks down network latency into microsecond-level telemetry.
 
-_(Screenshot)_
+<img width="1184" height="623" alt="Captura de pantalla 2026-01-18 a la(s) 2 46 02 p m" src="https://github.com/user-attachments/assets/2fe346b1-1eae-42fb-ad76-4dd1d939d03b" />
+
 
 ## 🛰️ Key Capabilities
 
