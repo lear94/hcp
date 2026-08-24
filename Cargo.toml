@@ -1,20 +1,52 @@
 [package]
 name = "hcp"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
+rust-version = "1.75"
+authors = ["Pablo Gonzalez"]
+description = "http-cockpit — a fast, keyboard-driven TUI HTTP client with forensic latency telemetry."
+documentation = "https://docs.rs/hcp"
+repository = "https://github.com/lear94/hcp"
+homepage = "https://github.com/lear94/hcp"
+license = "MIT"
+readme = "README.md"
+keywords = ["http", "tui", "client", "api", "curl"]
+categories = ["command-line-utilities", "development-tools", "web-programming"]
+exclude = ["/.github", "/assets"]
 
 [dependencies]
-# === UI STACK (Sincronizado a última versión estable) ===
+# === UI STACK ===
 ratatui = "0.29.0"
 crossterm = "0.28.1"
-tui-textarea = "0.7.0" # Compatible nativamente con Ratatui 0.29
+tui-textarea = "0.7.0"
 
-# === RED & ASYNC ===
-tokio = { version = "1.42", features = ["full"] }
-reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream", "json"] }
-futures-util = "0.3"
+# === NETWORK & ASYNC ===
+tokio = { version = "1.42", features = ["rt-multi-thread", "macros", "sync", "time", "net"] }
+reqwest = { version = "0.12.28", default-features = false, features = [
+    "rustls-tls",
+    "stream",
+    "json",
+    "http2",
+    "charset",
+    "cookies",
+    "gzip",
+    "brotli",
+    "deflate",
+    "zstd",
+] }
+futures-util = { version = "0.3", default-features = false, features = ["std"] }
+tower = { version = "0.5", default-features = false }
 
 # === UTILS ===
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 anyhow = "1.0"
+dirs = "6.0"
+unicode-width = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+panic = "abort"

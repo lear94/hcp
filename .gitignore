@@ -1,1 +1,7 @@
 /target
+**/*.rs.bk
+*.pdb
+
+# Local downloads written by the response-save shortcut
+/*.bin
+/*.json.download
